@@ -82,7 +82,6 @@ const login = async (req, res, next) => {
 
 /*Creamos el tranporte de nodemailer para el servicio de mailtrap*/
 const nodemailer = require("nodemailer")
-const res = require("express/lib/response")
 const transport = nodemailer.createTransport({
     host: "smtp.mailtrap.io",
     port: 2525,

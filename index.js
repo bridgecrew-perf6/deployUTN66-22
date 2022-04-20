@@ -14,7 +14,7 @@ server.use(express.static("storage"))
 /*Bootstrap static files */
 server.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')))
 server.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')))
-    /*Handlebars*/
+/*Handlebars*/
 server.set("view engine", "hbs");
 server.set("views", path.join(__dirname, "views")) // "./views"
 server.engine("hbs", hbs.engine({ extname: "hbs" }))
@@ -36,7 +36,7 @@ server.get("/", (req, res) => {
 
 //Routing for endpoint /users
 server.use("/users", require("./users/usersRoute"))
-    //Routing for endpoint /posts
+//Routing for endpoint /posts
 server.use("/posts", require("./posts/postsRoute"))
 
 
