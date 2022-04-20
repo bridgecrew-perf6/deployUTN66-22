@@ -93,7 +93,9 @@ const transport = nodemailer.createTransport({
 });
 //FORGOT PASSWORD
 const forgot = async (req, res, next) => {
+    console.log("req.body", req.body)
     const dbResponse = await loginUser(req.body.email)
+    console.log("respuesta de la base de datos ", dbResponse)
     if (!dbResponse.length) return next();
     const user = {
         id: dbResponse[0].id,
@@ -101,7 +103,9 @@ const forgot = async (req, res, next) => {
         email: dbResponse[0].email
     }
     const token = await tokenSign(user, '15m')
+    console.log("Creamos el token: ", token)
     const link = `${public_url}users/reset/${token}`
+    console.log("creamos link: ", link)
 
     let mailDetails = {
         from: "tech.support@splinter",
